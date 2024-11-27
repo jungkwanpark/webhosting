@@ -38,7 +38,7 @@ Bootstrap 5 Form Pack Template
         <main>
 
             <header class="site-header">
-                <div class="container">
+                <div class="container" style="background: transparent;">
                     <div class="row justify-content-between">
 
                         <div class="col-lg-12 col-12 d-flex align-items-center">
@@ -49,22 +49,6 @@ Bootstrap 5 Form Pack Template
                                     Home
                                 </span>
                             </a>
-
-                            <ul class="social-icon d-flex justify-content-center align-items-center mx-auto">
-                                <span class="text-white me-4 d-none d-lg-block">Stay connected</span>
-
-                                <li class="social-icon-item">
-                                    <a href="#" class="social-icon-link bi-instagram"></a>
-                                </li>
-
-                                <li class="social-icon-item">
-                                    <a href="#" class="social-icon-link bi-twitter"></a>
-                                </li>
-
-                                <li class="social-icon-item">
-                                    <a href="#" class="social-icon-link bi-whatsapp"></a>
-                                </li>
-                            </ul>
 
                             <div>
                                 <a href="#" class="custom-btn custom-border-btn btn" data-bs-toggle="modal" data-bs-target="#subscribeModal">Feedback
@@ -79,7 +63,6 @@ Bootstrap 5 Form Pack Template
                     </div>
                 </div>
             </header>
-
 
             <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">                
                 <div class="offcanvas-header">                    
@@ -108,7 +91,6 @@ Bootstrap 5 Form Pack Template
                     </nav>
                 </div>
             </div>
-
 
             <!-- Modal -->
             <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
@@ -165,33 +147,98 @@ Bootstrap 5 Form Pack Template
                 </div>
             </div>
 
-
             <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
                 <div class="container">
                     <div class="row">
+                  
+                      <!-- 메시지 영역 -->
 
-                        <div class="col-lg-6 col-12 mx-auto d-flex justify-content-center align-items-center" style="height: 100vh;">
-                            <!-- please set the date time in the init.js file -->
-                            
-                            <h1 class="text-white mt-2 mb-4 pb-2">
-                                <span style="display: block; margin-bottom: 12px;">국내 개발자 및 엔지니어용</span>
-                                <span style="display: block; margin-bottom: 12px;">해외 기술문서 요약 서비스</span>
-                              </h1>
+                      <div class="col-lg-6 col-12 mx-auto" 
+                           style="text-align: center; position: sticky; top: 0; z-index: 10; 
+                                 display: flex; flex-direction: column; justify-content: center; align-items: center; 
+                                 height: 50vh; padding-bottom: 20px; ">
+                        <h1 class="text-white mt-2 mb-4 pb-2">
+                          <br>
+                          <br>
+                          <br>
+                          <span style="display: block; margin-bottom: 12px;">국내 개발자 및 엔지니어용</span>
+                          <span style="display: block; margin-bottom: 12px;">해외 기술문서 요약 서비스</span>
+                        </h1>
+                      </div>
+                  
+                      <!-- URL 입력 및 결과 박스 영역 -->
+                      <div class="col-lg-6 col-12 mx-auto">
+                        <div class="container" style="margin-bottom: 15px;">
+                          <label for="urlInput" style="color: white; font-size: 18px; font-weight: bold;">문서  주소  입력</label>
+                          <input type="text" id="urlInput" placeholder="URL을 입력하세요" 
+                            style="color: black; font-size: 15px; width: 100%; height: 30px; padding: 10px; margin-top: 5px; margin-bottom: 5px; border-radius: 5px;">
+                          <button id="processButton" 
+                                  style="color: black; font-size: 15px; font-style: normal; font-weight: bold;
+                                        width: 150; height: 25px; padding: 10px; border-radius: 5px;
+                                        text-align: center; display: inline-flex; justify-content: center; align-items: center;">Submit</button>
+                      </div>
+                  
+                        <!-- 요약 결과 -->
+                        <div class="container" style="margin-bottom: 15px;">
+                            <label for="summaryResult" 
+                                   style="color: white; font-size: 18px; font-weight: bold; height: auto;">문서  요약  결과</label>
+                            <textarea id="summaryResult" readonly
+                                      style="color: black; font-size: 12px; width: 100%; padding: 10px; min-height: 100px; max-height: 200px; 
+                                             overflow-y: auto; resize: none;"></textarea>
                         </div>
+                        
+                        <!-- 번역 결과 -->
+                        <div class="container" style="margin-bottom: 15px;">
+                            <label for="translationResult" 
+                                   style="color: white; font-size: 18px; font-weight: bold; height: auto;">문서  번역  결과</label>
+                            <textarea id="translationResult" readonly
+                                      style="color: black; font-size: 12px; width: 100%; padding: 10px; min-height: 150px; max-height: 1000px; 
+                                             overflow-y: auto; resize: none;"></textarea>
+                        </div>
+                      </div>
+                      
                     </div>
-                </div>
+                  </div>
+
+                  
+
+                <style>
+                    .custom-video {
+                      height: 50%; /* 세로 크기 줄임 */
+                      width: 100%; /* 가로 크기 유지 */
+                    }
+                </style>
 
                 <div class="video-wrap">
-                    <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                    <video autoplay="" loop="" muted="" class="custom-video" poster="" style="width: 100%; height: 100%;">
                         <source src="videos/video.mp4" type="video/mp4">
 
                         Your browser does not support the video tag.
                     </video>
                 </div>
+               
             </section>
+
         </main>
 
         <!-- JAVASCRIPT FILES -->
+
+        <!--
+        <script>
+            function formatTextForDisplay(text) {
+                // 문장을 마침표를 기준으로 분리하고, 각 문장에 띄어쓰기를 추가하여 출력
+                return text.split(/[.!?]/).map(sentence => sentence.trim()).filter(Boolean).join('\n\n');
+            }       
+      
+            // '요약 결과' 박스에 텍스트 출력
+            document.getElementById('summaryResult').value = formatTextForDisplay(summaryText);
+        
+            // '번역 결과' 박스에 텍스트 출력
+            document.getElementById('translationResult').value = formatTextForDisplay(translationText);
+        </script>
+        -->
+
+
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/countdown.js"></script>
@@ -363,6 +410,65 @@ Bootstrap 5 Form Pack Template
                                 });
           </script>
         <!-- 수업 내용 끝 부분 -->
+
+        <script>
+            document.getElementById('processButton').addEventListener('click', async () => {
+              
+              $.busyLoadFull("show");
+
+              // Get the URL input value
+              const urlInput = document.getElementById('urlInput').value;
+        
+              // Validate input
+              if (!urlInput) {
+                alert('Please enter a valid URL.');
+                return;
+              }
+        
+              // Prepare the payload
+              const payload = { "url": urlInput };
+        
+              try {
+                // Send POST request to the Python application server
+                const response = await fetch('https://3952-34-80-216-157.ngrok-free.app', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(payload)
+                });
+        
+                // Parse the JSON response
+                const data = await response.json();
+        
+                // Debugging: Log the data to see the actual response
+                console.log(data);
+
+                // Extract "번역 결과" and "요약 결과"
+                // const summaryResult = data["summary"] || 'No summary result found.';
+                // const translationResult = data["translated_text"] || 'No translation result found.';
+                       
+
+                // UTF-8 디코딩이 필요할 경우 수동 처리
+                const decoder = new TextDecoder('utf-8');
+                const rawSummary = data.result.summary || 'No summary result found.';
+                const rawTranslation = data.result.translated_text || 'No translation result found.';
+
+                // 디코드된 문자열로 변환
+                const summaryResult = decoder.decode(new TextEncoder().encode(rawSummary));
+                const translationResult = decoder.decode(new TextEncoder().encode(rawTranslation));
+
+
+
+                // Display results in the respective textareas
+                document.getElementById('summaryResult').value = summaryResult;
+                document.getElementById('translationResult').value = translationResult;
+              } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while processing the URL.');
+              }
+            });
+          </script>
 
     </body>
 </html>
